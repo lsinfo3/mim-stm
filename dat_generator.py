@@ -90,7 +90,8 @@ def draw_group_size():
 def draw_from_group_distribution():
     #generate according to the group size distributions from our whatsanalyzer data set, omit samples if they are <=2 since we got that covered in draw_group_size    
     u = np.random.uniform(0, 1)  # Generate uniform random number
-    sample = int(inverse_cdf_contacts(u))        # Transform using the inverse CDF, round down to next int
+    u=np.random.uniform(0,0.9705 - 1e-12)
+    sample = int(inverse_cdf_group(u))        # Transform using the inverse CDF, round down to next int
     if sample <= 2 or sample > 256: 
         return draw_from_group_distribution()
     return sample
